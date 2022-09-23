@@ -1,4 +1,4 @@
-import { Controller, Get, Redirect, Req } from '@nestjs/common';
+import { Controller, Get, Redirect, Req, UseFilters, ForbiddenException } from '@nestjs/common';
 import { Request } from 'express';
 import { Observable, of } from 'rxjs';
 import { UsersService } from './users.service';
@@ -10,6 +10,7 @@ export class UsersController {
     @Get('/getUsers')
     getUsers(@Req() request: Request) {
         console.log(request.body)
+        throw new ForbiddenException('asdas')
         return this.usersService.getUsers();
     }
 
