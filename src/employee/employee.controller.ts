@@ -9,6 +9,6 @@ export class EmployeeController {
 
     @Get('/getEmployees')
     getEmployees(@Body() createCatDto: CreateCatDto) {
-        return 'asc';
+        return this.employeeService.getEmployeeInfo();
     }
 }

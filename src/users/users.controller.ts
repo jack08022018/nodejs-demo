@@ -10,7 +10,7 @@ export class UsersController {
     @Get('/getUsers')
     getUsers(@Req() request: Request) {
         console.log(request.body)
-        throw new ForbiddenException('asdas')
+        // throw new ForbiddenException('asdas')
         return this.usersService.getUsers();
     }
 
