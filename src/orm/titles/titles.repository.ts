@@ -18,12 +18,13 @@ export class TitlesRepository {
     return data
   }
 
-  // async updateTitle(): Promise<void> {
-  //   await this.titlesRepository.save({
-  //     salary: 100,
-  //     where: {
-  //       emp_no: In([10001])
-  //     },
-  //   });
-  // }
+  async updateTitle(): Promise<void> {
+    await this.titlesRepository.save({
+      title: 'Senior Engineer xx',
+      trash: 'trash',
+      where: {
+        emp_no: In([10001])
+      },
+    });
+  }
 }

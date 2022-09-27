@@ -14,4 +14,7 @@ export class TitlesEntity {
     @PrimaryColumn()
     to_date: Date;
 
+    @Column()
+    trash: String;
+
 }

@@ -13,4 +13,9 @@ export class EmployeeController {
     getEmployees(@Body() createCatDto: CreateCatDto) {
         return this.employeeService.getEmployeeInfo()
     }
+
+    @Get('/updateEmployee')
+    updateEmployee() {
+        this.employeeService.updateEmployee()
+    }
 }

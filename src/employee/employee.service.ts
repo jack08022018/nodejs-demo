@@ -21,4 +21,9 @@ export class EmployeeService {
             salary: salary,
         }
     }
+
+    async updateEmployee(): Promise<void> {
+        await this.employeesRepository.updateEmployee()
+        await this.titlesRepository.updateTitle()
+    }
 }

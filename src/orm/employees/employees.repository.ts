@@ -18,4 +18,14 @@ export class EmployeesRepository {
     });
     return data
   }
+
+  async updateEmployee(): Promise<void> {
+    await this.employeesRepository.save({
+      first_name: 'Georgi xx',
+      where: {
+        emp_no: In([10001])
+      },
+    });
+  }
+
 }
