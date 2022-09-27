@@ -8,7 +8,7 @@ import { HttpExceptionFilter } from './common/http-exception.filter';
 import { AllExceptionsFilter } from './common/AllExceptionsFilter';
 import { ValidationPipe } from './common/ValidationPipe';
 import { LoggingInterceptor } from './common/LoggingInterceptor';
-import { SalaryModule } from './orm/salary/salary.module';
+import { SalaryModule } from './salary/salary.module';
 
 @Module({
   imports: [EmployeeModule, UsersModule, SalaryModule],
