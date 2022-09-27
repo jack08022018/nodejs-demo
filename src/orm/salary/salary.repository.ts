@@ -11,16 +11,21 @@ export class SalaryRepository {
 
   async findByEmpNo(): Promise<SalariesEntity[]> {
     const data =  await this.salaryRepository.find({
-      select: {
-        emp_no: true,
-        salary: true,
-        from_date: true,
-        to_date: true,
-      },
+      select: ['emp_no','salary','from_date','to_date'],
       where: {
-        emp_no: In([10001,10002])
+        emp_no: In([10001]),
+        // from_date: new Date('1986-06-26')
       },
     });
     return data
+  }
+
+  async updateEmployee(): Promise<void> {
+    await this.salaryRepository.save({
+      salary: 100,
+      where: {
+        emp_no: In([10001])
+      },
+    });
   }
 }

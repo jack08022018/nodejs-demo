@@ -1,18 +1,17 @@
 import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
 
-@Entity('salaries')
-export class SalariesEntity {
+@Entity('titles')
+export class TitlesEntity {
     @PrimaryColumn()
     emp_no: number;
 
-    @Column()
-    salary: number;
+    @PrimaryColumn()
+    title: String;
 
     @PrimaryColumn()
-    // @Column({ type: 'timestamp' })
     from_date: Date;
 
-    @Column()
+    @PrimaryColumn()
     to_date: Date;
 
 }
