@@ -3,7 +3,7 @@ import { Repository, In } from 'typeorm';
 import { SalariesEntity } from './salary.entity';
 
 @Injectable()
-export class SalaryService {
+export class SalaryRepository {
   constructor(
     @Inject('SALARY_REPOSITORY')
     private salaryRepository: Repository<SalariesEntity>,
