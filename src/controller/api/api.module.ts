@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ApiController } from './api.controller';
 import { ApiService } from './api.service';
-import { EmployeesModule } from '../orm/employees/employees.module';
+import { EmployeesModule } from '../../repository/employees/employees.module';
 
 @Module({
   imports: [

@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './controller/users/users.module';
 import { APP_FILTER, APP_PIPE, APP_INTERCEPTOR } from '@nestjs/core';
 import { HttpExceptionFilter } from './config/http-exception.filter';
 import { AllExceptionsFilter } from './config/AllExceptionsFilter';
 import { ValidationPipe } from './config/ValidationPipe';
 import { LoggingInterceptor } from './config/LoggingInterceptor';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ApiModule } from './api/api.module';
+import { ApiModule } from './controller/api/api.module';
 
 @Module({
   imports: [

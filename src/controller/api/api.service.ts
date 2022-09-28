@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { EmployeesRepository } from '../orm/employees/employees.repository';
+import { EmployeesRepository } from '../../repository/employees/employees.repository';
 
 @Injectable()
 export class ApiService {
