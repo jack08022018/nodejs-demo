@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Repository, In } from 'typeorm';
+import { Repository, In, EntityManager } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EmployeesEntity } from './employees.entity';
 
@@ -11,11 +11,11 @@ export class EmployeesRepository {
   // ) {}
   constructor(
     @InjectRepository(EmployeesEntity)
-    private employeesRepository: Repository<EmployeesEntity>,
+    private repository: Repository<EmployeesEntity>,
   ) {}
 
   async findByEmpNo(): Promise<EmployeesEntity[]> {
-    const data =  await this.employeesRepository.find({
+    const data =  await this.repository.find({
       select: ['emp_no','first_name','gender','birth_date'],
       where: {
         emp_no: In([10001])
@@ -24,13 +24,12 @@ export class EmployeesRepository {
     return data
   }
 
-  async updateEmployee(): Promise<void> {
-    // await this.employeesRepository.save(emp);
-
-    await this.employeesRepository.update(
+  async updateEmployee(transactionManager: EntityManager): Promise<void> {
+    await transactionManager.update(
+      EmployeesEntity,
       {emp_no: 10001},
-      {first_name: 'Georgi xx'}
-    );
+      {first_name: 'Georgi xx'},
+    )
   }
 
 }

@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '../../config/database.module';
-import { titlesProviders } from './titles.providers';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { TitlesRepository } from './titles.repository';
+import { TitlesEntity } from './titles.entity';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [TypeOrmModule.forFeature([TitlesEntity])],
   exports: [TitlesRepository],
   providers: [
-    ...titlesProviders,
     TitlesRepository,
   ],
 })
