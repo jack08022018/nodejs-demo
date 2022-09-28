@@ -699,7 +699,7 @@
     "webpack" "5.74.0"
     "webpack-node-externals" "3.0.0"
 
-"@nestjs/common@^9.0.0":
+"@nestjs/common@^8.0.0 || ^9.0.0", "@nestjs/common@^9.0.0":
   "integrity" "sha512-qrrCnc7FwYzJDjGJTRdL68nULFV0dkEa1DTJgtR7nHXzwcJU8EC+9wfMkahQdyB7ZPAQNJSuyarwmbgVFFNoLg=="
   "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-9.1.1.tgz"
   "version" "9.1.1"
@@ -708,7 +708,7 @@
     "tslib" "2.4.0"
     "uuid" "9.0.0"
 
-"@nestjs/core@^9.0.0":
+"@nestjs/core@^8.0.0 || ^9.0.0", "@nestjs/core@^9.0.0":
   "integrity" "sha512-IFL9DAGFAFgVvIQDoXh248KH8Hqwj6x3Nz1ud4V1Gzv6FnsjANe4nhUAO9IJbUydtFAiNuclXC5gs2vbhBtqqg=="
   "resolved" "https://registry.npmjs.org/@nestjs/core/-/core-9.1.1.tgz"
   "version" "9.1.1"
@@ -749,6 +749,13 @@
   "version" "9.1.1"
   dependencies:
     "tslib" "2.4.0"
+
+"@nestjs/typeorm@^9.0.1":
+  "integrity" "sha512-A2BgLIPsMtmMI0bPKEf4bmzgFPsnvHqNBx3KkvaJ7hJrBQy0OqYOb+Rr06ifblKWDWS2tUPNrAFQbZjtk3PI+g=="
+  "resolved" "https://registry.npmjs.org/@nestjs/typeorm/-/typeorm-9.0.1.tgz"
+  "version" "9.0.1"
+  dependencies:
+    "uuid" "8.3.2"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -2535,11 +2542,6 @@
   "integrity" "sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw=="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
-
-"fsevents@^2.3.2", "fsevents@~2.3.2":
-  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  "version" "2.3.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -4736,7 +4738,7 @@
   "resolved" "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   "version" "0.0.6"
 
-"typeorm@^0.3.10":
+"typeorm@^0.3.0", "typeorm@^0.3.10":
   "integrity" "sha512-VMKiM84EpJQ+Mz9xDIPqnfplWhyUy1d8ccaKdMY9obifxJOTFnv8GYVyPsGwG8Lk7Nb8MlttHyHWENGAhBA3WA=="
   "resolved" "https://registry.npmjs.org/typeorm/-/typeorm-0.3.10.tgz"
   "version" "0.3.10"
@@ -4800,6 +4802,11 @@
   "version" "1.0.1"
 
 "uuid@^8.3.2":
+  "integrity" "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
+  "version" "8.3.2"
+
+"uuid@8.3.2":
   "integrity" "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
   "resolved" "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
   "version" "8.3.2"

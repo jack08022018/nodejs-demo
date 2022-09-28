@@ -19,12 +19,11 @@ export class TitlesRepository {
   }
 
   async updateTitle(): Promise<void> {
-    await this.titlesRepository.save({
-      title: 'Senior Engineer xx',
-      trash: 'trash',
-      where: {
-        emp_no: In([10001])
-      },
-    });
+    // await this.titlesRepository.save(title);
+
+    await this.titlesRepository.update(
+      {emp_no: In([10001])},
+      {title: 'Senior Engineer xx', trash: 'trash'}
+    );
   }
 }

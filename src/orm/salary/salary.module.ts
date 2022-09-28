@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '../../common/database.module';
+import { DatabaseModule } from '../../config/database.module';
 import { salaryProviders } from './salary.providers';
 import { SalaryRepository } from './salary.repository';
 
