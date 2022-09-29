@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { EmployeesRepository } from '../../repository/employees/employees.repository';
 import { TitlesRepository } from '../../repository/titles/titles.repository';
-import { DataSource, In } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { InjectDataSource } from '@nestjs/typeorm';
-import { EmployeesEntity } from '../../repository/employees/employees.entity';
-import { TitlesEntity } from '../../repository/titles/titles.entity';
+import { ConfigService } from '@nestjs/config';
+
 
 @Injectable()
 export class ApiService {
@@ -12,6 +12,7 @@ export class ApiService {
         private readonly employeesRepository: EmployeesRepository,
         private readonly titlesRepository: TitlesRepository,
         // private readonly salaryRepository: SalaryRepository,
+        private configService: ConfigService,
 
         @InjectDataSource()
         private dataSource: DataSource
@@ -19,20 +20,25 @@ export class ApiService {
 
     async getEmployeeInfo(): Promise<any> {
         // const salary = await this.salaryRepository.findByEmpNo()
-        const employees = await this.employeesRepository.findByEmpNo()
-        const titles = await this.titlesRepository.findTitle()
+        // const employees = await this.employeesRepository.findByEmpNo()
+        // const titles = await this.titlesRepository.findTitle()
+        const port = this.configService.get<string>('http.host')
+        console.log(port)
         return {
-            employees: employees,
-            titles: titles,
+            port: port,
+            // employees: employees,
+            // titles: titles,
             // salary: salary,
         }
     }
 
     async updateEmployee(): Promise<any> {
-        await this.dataSource.manager.transaction("SERIALIZABLE", async (transactionManager) => {
-            await this.employeesRepository.updateEmployee(transactionManager)
-            await this.titlesRepository.updateTitle(transactionManager)
-            // throw new Error('sdas')
+        await this.dataSource.manager.transaction("SERIALIZABLE", async (transManager) => {
+            await this.employeesRepository.updateEmployee(transManager)
+            await this.titlesRepository.updateTitle(transManager)
+            // let data = await transManager.query(`SELECT * FROM titles`)
+            throw new Error('sdas')
         })
     }
+
 }
