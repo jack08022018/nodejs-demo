@@ -20,14 +20,12 @@ export class ApiService {
 
     async getEmployeeInfo(): Promise<any> {
         // const salary = await this.salaryRepository.findByEmpNo()
-        // const employees = await this.employeesRepository.findByEmpNo()
-        // const titles = await this.titlesRepository.findTitle()
-        const port = this.configService.get<string>('http.host')
-        console.log(port)
+        const employees = await this.employeesRepository.findByEmpNo()
+        const titles = await this.titlesRepository.findTitle()
+        // const port = this.configService.get('http.host')
         return {
-            port: port,
-            // employees: employees,
-            // titles: titles,
+            employees: employees,
+            titles: titles,
             // salary: salary,
         }
     }
