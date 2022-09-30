@@ -1,14 +1,23 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module, Global } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Global()
 @Module({
   imports: [
+    // HttpModule.registerAsync({
+    //     useFactory: () => ({
+    //       timeout: 5000,
+    //       maxRedirects: 5,
+    //     }),
+    // })
     HttpModule.registerAsync({
-        useFactory: () => ({
-          timeout: 5000,
-          maxRedirects: 5,
+        imports: [ConfigModule],
+        useFactory: async (configService: ConfigService) => ({
+          timeout: configService.get('HTTP_TIMEOUT'),
+          maxRedirects: configService.get('HTTP_MAX_REDIRECTS'),
         }),
+        inject: [ConfigService],
     })
   ],
   exports: [HttpModule],

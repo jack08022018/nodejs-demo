@@ -10,7 +10,6 @@ import { ApiModule } from './controller/api/api.module';
 import { DatabaseModule } from './config/database.module';
 import { ConfigModule } from '@nestjs/config';
 import configurationYaml from './config/configuration.yaml';
-import { HttpModule } from '@nestjs/axios';
 import { GlobalHttpModule } from './config/GlobalHttpModule';
 
 @Module({

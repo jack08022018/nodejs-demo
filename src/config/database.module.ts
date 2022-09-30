@@ -1,7 +1,6 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { 
-  TypeOrmModule, 
-} from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({})
 export class DatabaseModule {
@@ -11,13 +10,20 @@ export class DatabaseModule {
       module: DatabaseModule,
       imports: [
         TypeOrmModule.forRootAsync({
-          useFactory: () => ({
+          imports: [ConfigModule],
+          inject: [ConfigService],
+          useFactory: (configService: ConfigService) => ({
             type: 'mysql',
             host: 'localhost',
             port: 3306,
             username: 'root',
             password: '123456',
             database: 'employees',
+            // host: configService.get('host'),
+            // port: configService.get('port'),
+            // username: configService.get('username'),
+            // password: configService.get('password'),
+            // database: configService.get('database'),
             autoLoadEntities: true,
             synchronize: false,//alway false
             logging: true,
