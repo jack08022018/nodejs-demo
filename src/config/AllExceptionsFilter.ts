@@ -32,6 +32,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
         }else if(exception instanceof Error) {
             messageError = (exception as Error).message
         }
+        console.log(`Message Error: ${messageError}`);
+        console.log((exception as Error).stack)
 
         const responseBody = {
             statusCode: httpStatus,

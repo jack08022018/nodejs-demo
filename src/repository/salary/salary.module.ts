@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '../../config/database.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { SalaryRepository } from './salary.repository';
+import { SalariesEntity } from './salary.entity';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [TypeOrmModule.forFeature([SalariesEntity])],
   exports: [SalaryRepository],
   providers: [
     SalaryRepository,

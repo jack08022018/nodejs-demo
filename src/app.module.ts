@@ -7,20 +7,15 @@ import { AllExceptionsFilter } from './config/AllExceptionsFilter';
 import { ValidationPipe } from './config/ValidationPipe';
 import { LoggingInterceptor } from './config/LoggingInterceptor';
 import { ApiModule } from './controller/api/api.module';
-import { DatabaseModule } from './config/database.module';
-import { ConfigModule } from '@nestjs/config';
-import configurationYaml from './config/configuration.yaml';
+import { DatabaseModule } from './config/DatabaseModule';
+import { YamlModule } from './config/YamlModule';
 import { GlobalHttpModule } from './config/GlobalHttpModule';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      load: [configurationYaml],
-      isGlobal: true,
-      cache: true,
-    }),
+    YamlModule,
     GlobalHttpModule,
-    DatabaseModule.forRoot(),
+    DatabaseModule,
     UsersModule,
     ApiModule,
   ],

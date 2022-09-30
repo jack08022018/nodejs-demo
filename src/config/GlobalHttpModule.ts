@@ -5,12 +5,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 @Global()
 @Module({
   imports: [
-    // HttpModule.registerAsync({
-    //     useFactory: () => ({
-    //       timeout: 5000,
-    //       maxRedirects: 5,
-    //     }),
-    // })
     HttpModule.registerAsync({
         imports: [ConfigModule],
         useFactory: async (configService: ConfigService) => ({

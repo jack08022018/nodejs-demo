@@ -3,9 +3,9 @@ server:
 datasource:
   host: localhost
   port: 3306
-  username: 'root'
-  password: '123456'
-  database: 'employees'
+  username: root
+  password: 123456
+  database: employees
 
 HTTP_TIMEOUT: 5000
 HTTP_MAX_REDIRECTS: 5
