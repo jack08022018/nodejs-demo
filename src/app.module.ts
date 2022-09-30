@@ -10,6 +10,8 @@ import { ApiModule } from './controller/api/api.module';
 import { DatabaseModule } from './config/database.module';
 import { ConfigModule } from '@nestjs/config';
 import configurationYaml from './config/configuration.yaml';
+import { HttpModule } from '@nestjs/axios';
+import { GlobalHttpModule } from './config/GlobalHttpModule';
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import configurationYaml from './config/configuration.yaml';
       isGlobal: true,
       cache: true,
     }),
+    GlobalHttpModule,
     DatabaseModule.forRoot(),
     UsersModule,
     ApiModule,
