@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './controller/users/users.module';
 import { APP_FILTER, APP_PIPE, APP_INTERCEPTOR, APP_GUARD } from '@nestjs/core';
-import { HttpExceptionFilter } from './config/http-exception.filter';
 import { AllExceptionsFilter } from './config/AllExceptionsFilter';
 import { ValidationPipe } from './config/ValidationPipe';
 import { LoggingInterceptor } from './config/LoggingInterceptor';
