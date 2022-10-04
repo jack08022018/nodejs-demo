@@ -10,12 +10,14 @@ import { ApiModule } from './controller/api/api.module';
 import { DatabaseModule } from './config/DatabaseModule';
 import { YamlModule } from './config/YamlModule';
 import { GlobalHttpModule } from './config/GlobalHttpModule';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     YamlModule,
     GlobalHttpModule,
     DatabaseModule,
+    AuthModule,
     UsersModule,
     ApiModule,
   ],

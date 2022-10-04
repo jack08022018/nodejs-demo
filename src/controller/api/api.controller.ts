@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Req, Body, Res, Response, StreamableFile } from '@nestjs/common';
+import { Controller, Get, Post, Req, Body, Res, Query,
+    Response, StreamableFile, UseGuards, Request } from '@nestjs/common';
 import { join } from 'path';
 import { createReadStream } from 'fs';
 import { ApiService } from './api.service';
@@ -6,6 +7,9 @@ import { CreateCatDto } from './dto/CreateCatDto';
 import { HttpService } from '@nestjs/axios';
 import { AxiosRequestConfig } from 'axios';
 import { lastValueFrom, map } from 'rxjs';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+import { LocalAuthGuard } from '../../auth/guards/local-auth.guard';
+import * as bcrypt from 'bcrypt';
 
 @Controller('api')
 export class ApiController {
@@ -13,6 +17,20 @@ export class ApiController {
         private readonly apiService: ApiService,
         private readonly httpService: HttpService,
     ) {}
+
+    @UseGuards(JwtAuthGuard)
+    @Get('/profile')
+    async getProfile(@Request() req) {
+        return req.user;
+    }
+
+    @Get('/genPassword')
+    async genPassword(@Query('password') password: string) {
+        const saltOrRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltOrRounds);
+        return hashedPassword
+        // return req.user;
+    }
 
     @Get('/getEmployeeInfo')
     getEmployees(@Body() createCatDto: CreateCatDto) {
