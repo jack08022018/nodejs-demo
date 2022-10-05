@@ -12,6 +12,11 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post('/login')
     async login(@Request() req) {
+        // res.cookie('access_token', 'xxxaaa', {
+        //     maxAge: 365 * 24 * 60 * 60 * 100,
+        //     httpOnly: true,
+        //     //secure: true;
+        // })
         return this.authService.login(req.user);
     }
 

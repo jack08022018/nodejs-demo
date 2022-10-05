@@ -25,10 +25,11 @@ export class AuthService {
 
   async login(user: any) {
     const payload = { username: user.username, sub: user.userId };
+    const current = new Date();
     return {
       access_token: this.jwtService.sign(payload),
-      createDate: new Date(),
-      expiredDate: new Date(new Date().getTime() + 60000)
+      createDate: current,
+      expiredDate: new Date(current.getTime() + 60000)
     };
   }
 }

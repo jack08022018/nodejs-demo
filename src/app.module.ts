@@ -11,6 +11,8 @@ import { DatabaseModule } from './config/DatabaseModule';
 import { YamlModule } from './config/YamlModule';
 import { GlobalHttpModule } from './config/GlobalHttpModule';
 import { AuthModule } from './auth/auth.module';
+import { EmployeesModule } from './repository/employees/employees.module';
+import { TitlesModule } from './repository/titles/titles.module';
 
 @Module({
   imports: [
@@ -18,8 +20,11 @@ import { AuthModule } from './auth/auth.module';
     GlobalHttpModule,
     DatabaseModule,
     AuthModule,
+
     UsersModule,
     ApiModule,
+    EmployeesModule,
+    TitlesModule,
   ],
   controllers: [AppController],
   providers: [
