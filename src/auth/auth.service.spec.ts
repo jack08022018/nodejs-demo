@@ -1,10 +1,10 @@
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { Test, TestingModule } from '@nestjs/testing';
-import { UsersModule } from '../users/users.module';
+import { UsersModule } from '../controller/users/users.module';
 import { AuthService } from './auth.service';
-import { jwtConstants } from './constants';
-import { JwtStrategy } from './strategies/jwt.strategy';
+import { authConstants } from './authConstants';
+import { JwtBearerStrategy } from './strategies/jwt-bearer.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 
 describe('AuthService', () => {
@@ -16,11 +16,11 @@ describe('AuthService', () => {
         UsersModule,
         PassportModule,
         JwtModule.register({
-          secret: jwtConstants.secret,
+          secret: authConstants.secret,
           signOptions: { expiresIn: '60s' },
         }),
       ],
-      providers: [AuthService, LocalStrategy, JwtStrategy],
+      providers: [AuthService, LocalStrategy, JwtBearerStrategy],
     }).compile();
 
     service = moduleRef.get<AuthService>(AuthService);
@@ -40,11 +40,11 @@ describe('validateUser', () => {
         UsersModule,
         PassportModule,
         JwtModule.register({
-          secret: jwtConstants.secret,
+          secret: authConstants.secret,
           signOptions: { expiresIn: '60s' },
         }),
       ],
-      providers: [AuthService, LocalStrategy, JwtStrategy],
+      providers: [AuthService, LocalStrategy, JwtBearerStrategy],
     }).compile();
 
     service = moduleRef.get<AuthService>(AuthService);
@@ -70,18 +70,18 @@ describe('validateLogin', () => {
         UsersModule,
         PassportModule,
         JwtModule.register({
-          secret: jwtConstants.secret,
+          secret: authConstants.secret,
           signOptions: { expiresIn: '60s' },
         }),
       ],
-      providers: [AuthService, LocalStrategy, JwtStrategy],
+      providers: [AuthService, LocalStrategy, JwtBearerStrategy],
     }).compile();
 
     service = moduleRef.get<AuthService>(AuthService);
   });
 
   it('should return JWT object when credentials are valid', async () => {
-    const res = await service.login({ username: 'maria', userId: 3 });
+    const res = await service.login({ username: 'maria', password: 'maria' });
     expect(res.access_token).toBeDefined();
   });
 });

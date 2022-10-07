@@ -8,8 +8,11 @@ import { HttpService } from '@nestjs/axios';
 import { AxiosRequestConfig } from 'axios';
 import { lastValueFrom, map } from 'rxjs';
 import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
-import { LocalAuthGuard } from '../../auth/guards/local-auth.guard';
+import { RolesGuard } from '../../auth/guards/roles.guard';
+import { RateGuard } from '../../auth/guards/rate.guard';
 import * as bcrypt from 'bcrypt';
+import { Roles } from '../../auth/decorators/roles.decorator'
+import { RateLimit } from '../../auth/decorators/rate-limit.decorator'
 
 @Controller('api')
 export class ApiController {
@@ -18,9 +21,18 @@ export class ApiController {
         private readonly httpService: HttpService,
     ) {}
 
-    @UseGuards(JwtAuthGuard)
-    @Get('/profile')
-    async getProfile(@Request() req) {
+    @Get('/roleAdmin')
+    @Roles('admin')
+    @UseGuards(JwtAuthGuard, RolesGuard, RateGuard)
+    @RateLimit(2000)
+    async roleAdmin(@Request() req) {
+        return req.user;
+    }
+
+    @Get('/roleUser')
+    @Roles('admin','user')
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    async roleUser(@Request() req) {
         return req.user;
     }
 
