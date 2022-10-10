@@ -13,6 +13,7 @@ import { GlobalHttpModule } from './config/GlobalHttpModule';
 import { AuthModule } from './auth/auth.module';
 import { EmployeesModule } from './repository/employees/employees.module';
 import { TitlesModule } from './repository/titles/titles.module';
+import { SalaryModule } from './repository/salary/salary.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { TitlesModule } from './repository/titles/titles.module';
     ApiModule,
     EmployeesModule,
     TitlesModule,
+    SalaryModule,
   ],
   controllers: [AppController],
   providers: [

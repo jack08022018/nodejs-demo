@@ -1,16 +1,17 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository, In } from 'typeorm';
 import { SalariesEntity } from './salary.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class SalaryRepository {
   constructor(
-    @Inject('SALARY_REPOSITORY')
-    private salaryRepository: Repository<SalariesEntity>,
+    @InjectRepository(SalariesEntity)
+    private repository: Repository<SalariesEntity>,
   ) {}
 
   async findByEmpNo(): Promise<SalariesEntity[]> {
-    const data =  await this.salaryRepository.find({
+    const data =  await this.repository.find({
       select: ['emp_no','salary','from_date','to_date'],
       where: {
         emp_no: In([10001]),
@@ -21,7 +22,7 @@ export class SalaryRepository {
   }
 
   async updateEmployee(): Promise<void> {
-    await this.salaryRepository.save({
+    await this.repository.save({
       salary: 100,
       where: {
         emp_no: In([10001])

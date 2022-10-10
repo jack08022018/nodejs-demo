@@ -24,6 +24,6 @@ export class TitlesRepository {
       TitlesEntity,
       {emp_no: In([10001])},
       {title: 'Senior Engineer xx'},
-  )
+    )
   }
 }

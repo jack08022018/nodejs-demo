@@ -16,6 +16,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         password: configService.get('datasource.password').toString(),
         database: configService.get('datasource.database'),
         autoLoadEntities: true,
+        // entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: false,//alway false
         logging: true,
         keepConnectionAlive: true,

@@ -13,4 +13,10 @@ export class UsersEntity {
 
     @Column()
     roles?: string[];
+
+    @Column()
+    refresh_token?: string;
+
+    @Column()
+    refresh_expires_in?: string;
 }

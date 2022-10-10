@@ -3,6 +3,9 @@ import { UsersRepository } from './repository/users.repository';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsersEntity } from './repository/users.entity';
+import ms from 'ms';
+import { AuthConstants, getSecond } from './authConstants';
+var randtoken = require('rand-token');
 
 @Injectable()
 export class AuthService {
@@ -28,8 +31,19 @@ export class AuthService {
     const current = new Date();
     return {
       access_token: this.jwtService.sign(payload),
+      expires_in: getSecond(AuthConstants.expiresIn),
       createDate: current,
-      expiredDate: new Date(current.getTime() + 3600000)
+      // refresh_token: await this.generateRefreshToken(payload),
+      // refresh_expires_in: getSecond(AuthConstants.expiresIn),
     };
   }
+
+  // async generateRefreshToken(payload: UsersEntity): Promise<string> {
+  //   var refreshToken = randtoken.generate(16);
+  //   var expirydate = new Date();
+  //   expirydate.setDate(expirydate.getTime() + getSecond(AuthConstants.refreshExpiresIn));
+  //   await this.usersRepository.saveorupdateRefreshToke(refreshToken, userId, expirydate);
+  //   return refreshToken
+  // }
+
 }

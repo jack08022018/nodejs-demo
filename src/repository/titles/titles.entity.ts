@@ -11,7 +11,7 @@ export class TitlesEntity {
     @PrimaryColumn()
     from_date: Date;
 
-    @PrimaryColumn()
+    @Column()
     to_date: Date;
 
     // @Column()

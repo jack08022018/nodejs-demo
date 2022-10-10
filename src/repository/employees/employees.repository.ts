@@ -5,10 +5,6 @@ import { EmployeesEntity } from './employees.entity';
 
 @Injectable()
 export class EmployeesRepository {
-  // constructor(
-  //   @Inject('EMPLOYEES_REPOSITORY')
-  //   private employeesRepository: Repository<EmployeesEntity>,
-  // ) {}
   constructor(
     @InjectRepository(EmployeesEntity)
     private repository: Repository<EmployeesEntity>,
